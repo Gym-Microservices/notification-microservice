@@ -27,7 +27,7 @@ public class NotificationController {
             @ApiResponse(responseCode = "200", description = "Notification sent successfully"),
             @ApiResponse(responseCode = "400", description = "Error sending notification")
     })
-    @PreAuthorize("hasRole('ADMIN') or hasRole('TRAINER')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COACH')")
     public ResponseEntity<Void> sendNotification(@RequestBody NotificationDTO notification) {
         notificationService.sendNotification(notification);
         return ResponseEntity.ok().build();
